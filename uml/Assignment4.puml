@@ -1,0 +1,46 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class App {
+    main()
+    start()
+}
+
+class GuiCentral{}
+
+class ListCentral {
+    +Map of a list of list
+    -Map of a list of items
+
+    newList()
+    editListTitle()
+    removeList()
+
+    addItem()
+    removeItem()
+    getItemInfo()
+    editItemInfo()
+    markComplete()
+    markIncomplete()
+    sortItems()
+}
+
+class FileCentral {
+    saveSingleList()
+    saveAll()
+    loadSingleList()
+    loadMultiList()
+}
+
+javafx.Application <|--- App
+javafx.MainWindow o-- javafx.TitleWindow
+javafx.MainWindow o-- javafx.SaveWindow
+javafx.MainWindow o-- javafx.LoadWindow
+javafx.MainWindow o-- javafx.ListWindow
+javafx.ListWindow o-- javafx.ItemWindow
+
+App o-- ListCentral
+App o-- FileCentral
+App o-- GuiCentral
+
+@enduml
